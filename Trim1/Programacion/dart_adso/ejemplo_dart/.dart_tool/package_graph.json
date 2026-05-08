@@ -1,0 +1,21 @@
+{
+  "roots": [
+    "miproyecto"
+  ],
+  "packages": [
+    {
+      "name": "miproyecto",
+      "version": "1.0.0",
+      "dependencies": [],
+      "devDependencies": [
+        "lints"
+      ]
+    },
+    {
+      "name": "lints",
+      "version": "6.1.0",
+      "dependencies": []
+    }
+  ],
+  "configVersion": 1
+}
