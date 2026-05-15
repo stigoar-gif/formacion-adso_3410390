@@ -1,0 +1,11 @@
+#caja-principal{
+    background-color: black;
+    color: white;
+}
+.caja-secundaria{
+    border: 2px solid blue;
+}
+.tarjeta{
+    padding: 20px;
+    margin: 15px;
+}

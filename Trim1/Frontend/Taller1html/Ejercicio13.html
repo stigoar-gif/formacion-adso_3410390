@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Reactor</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root{
+            --neon-pink:#ff00ff;
+            --neon-blue:#00f2ff;
+            --neon-green:#39ff14;
+            --bg-dark:#0d0d21;
+        }
+
+        *{
+            box-sizing:border-box;
+        }
+
+        body{
+            margin:0;
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            overflow:hidden;
+
+            background:var(--bg-dark);
+
+            color:white;
+
+            font-family:sans-serif;
+        }
+
+        .arcade-cabinet{
+
+            width:90%;
+            max-width:900px;
+
+            padding:20px;
+
+            display:grid;
+            grid-template-columns:300px 1fr;
+            gap:20px;
+
+            background:#1a1a2e;
+
+            border:4px solid var(--neon-blue);
+
+            box-shadow:
+            0 0 20px var(--neon-blue),
+            0 0 50px rgba(0,242,255,0.5);
+
+            animation:pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse{
+
+            from{
+                box-shadow:
+                0 0 20px var(--neon-blue),
+                0 0 50px rgba(0,242,255,0.5);
+            }
+
+            to{
+                box-shadow:
+                0 0 30px var(--neon-pink),
+                0 0 70px rgba(255,0,255,0.5);
+            }
+        }
+
+        h1{
+
+            grid-column:1/-1;
+
+            text-align:center;
+
+            font-family:'Press Start 2P', cursive;
+
+            font-size:0.8rem;
+
+            color:var(--neon-pink);
+
+            text-shadow:
+            2px 2px black,
+            0 0 15px var(--neon-pink);
+
+            margin-bottom:10px;
+        }
+
+        .controls{
+
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+
+            padding:15px;
+
+            background:rgba(0,0,0,0.7);
+
+            border:2px solid var(--neon-green);
+        }
+
+        .controls div{
+
+            padding:12px;
+
+            border:2px solid transparent;
+
+            transition:
+            transform .3s ease,
+            box-shadow .3s ease,
+            background .3s ease;
+        }
+
+        .controls div:hover{
+
+            transform:scale(1.05);
+
+            background:rgba(255,255,255,0.05);
+
+            border:2px solid var(--neon-pink);
+
+            box-shadow:0 0 15px var(--neon-pink);
+        }
+
+        label{
+
+            display:block;
+
+            margin-bottom:10px;
+
+            font-family:'Press Start 2P', cursive;
+
+            font-size:0.45rem;
+        }
+
+        select,
+        input[type="range"]{
+
+            width:100%;
+
+            cursor:pointer;
+        }
+
+        select:hover,
+        input[type="range"]:hover{
+
+            filter:drop-shadow(0 0 8px var(--neon-blue));
+        }
+
+        .game-screen{
+
+            position:relative;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            min-height:420px;
+
+            overflow:hidden;
+
+            background:black;
+
+            border:2px solid var(--neon-pink);
+
+            background-image:
+            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+
+            background-size:20px 20px;
+
+            transition:box-shadow .3s ease;
+        }
+
+        .game-screen:hover{
+
+            box-shadow: inset 0 0 25px var(--neon-blue);
+        }
+
+        .sprite{
+
+            position:relative;
+
+            width:120px;
+            height:120px;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            background:var(--neon-green);
+
+            color:black;
+
+            font-family:'Press Start 2P', cursive;
+
+            font-size:0.6rem;
+
+            box-shadow:0 0 20px var(--neon-green);
+
+            transition:
+            width .2s,
+            height .2s,
+            border-radius .2s,
+            background-color .2s;
+        }
+
+        .status-bar{
+
+            position:absolute;
+
+            bottom:0;
+
+            width:100%;
+
+            padding:8px;
+
+            text-align:center;
+
+            background:var(--neon-blue);
+
+            color:black;
+
+            font-family:'Press Start 2P', cursive;
+
+            font-size:0.4rem;
+
+            animation:flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker{
+
+            from{
+                opacity:1;
+            }
+
+            to{
+                opacity:.7;
+            }
+        }
+
+        .particle{
+
+            position:absolute;
+
+            width:4px;
+            height:4px;
+
+            background:var(--neon-blue);
+
+            border-radius:50%;
+
+            opacity:0.8;
+
+            box-shadow:
+            0 0 10px var(--neon-blue),
+            0 0 20px var(--neon-blue);
+
+            animation:floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle{
+
+            0%{
+
+                transform:
+                translateY(0px)
+                scale(1);
+
+                opacity:0;
+            }
+
+            50%{
+                opacity:1;
+            }
+
+            100%{
+
+                transform:
+                translateY(-200px)
+                scale(0);
+
+                opacity:0;
+            }
+        }
+
+        @media(max-width:768px){
+
+            .arcade-cabinet{
+                grid-template-columns:1fr;
+            }
+
+            h1{
+                font-size:0.6rem;
+            }
+
+            .game-screen{
+                min-height:300px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="arcade-cabinet">
+
+        <h1>[ PIXEL REACTOR ]</h1>
+
+        <div class="controls">
+
+            <div>
+
+                <label>COLOR SYSTEM</label>
+
+                <select id="colorSys">
+
+                    <option value="hsl">
+                        HSL (RAINBOW)
+                    </option>
+
+                    <option value="rgb">
+                        RGB (DYNAMIC)
+                    </option>
+
+                    <option value="rgba">
+                        RGBA (TRANSPARENT)
+                    </option>
+
+                </select>
+
+                <input
+                    type="range"
+                    id="colorSlider"
+                    min="0"
+                    max="255"
+                    value="120"
+                >
+
+            </div>
+
+            <div>
+
+                <label>SIZE & UNIT</label>
+
+                <select id="unitSys">
+
+                    <option value="px">
+                        PIXELS (px)
+                    </option>
+
+                    <option value="vw">
+                        VIEWPORT WIDTH (vw)
+                    </option>
+
+                    <option value="vh">
+                        VIEWPORT HEIGHT (vh)
+                    </option>
+
+                    <option value="rem">
+                        RELATIVE (rem)
+                    </option>
+
+                    <option value="em">
+                        EM UNIT (em)
+                    </option>
+
+                    <option value="%">
+                        PERCENT (%)
+                    </option>
+
+                </select>
+
+                <input
+                    type="range"
+                    id="sizeSlider"
+                    min="5"
+                    max="50"
+                    value="15"
+                >
+
+            </div>
+
+            <div>
+
+                <label>SHAPE MORPH</label>
+
+                <input
+                    type="range"
+                    id="radiusSlider"
+                    min="0"
+                    max="50"
+                    value="0"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="game-screen">
+
+            <div id="player" class="sprite">
+                CSS
+            </div>
+
+            <div id="stats" class="status-bar">
+                STATUS: ONLINE
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const player =
+        document.getElementById("player");
+
+        const colorSys =
+        document.getElementById("colorSys");
+
+        const colorSlider =
+        document.getElementById("colorSlider");
+
+        const unitSys =
+        document.getElementById("unitSys");
+
+        const sizeSlider =
+        document.getElementById("sizeSlider");
+
+        const radiusSlider =
+        document.getElementById("radiusSlider");
+
+        const stats =
+        document.getElementById("stats");
+
+        const screen =
+        document.querySelector(".game-screen");
+
+        function updatePlayer(){
+
+            let colorValue;
+
+            if(colorSys.value === "hsl"){
+
+                colorValue =
+                `hsl(${colorSlider.value},100%,50%)`;
+
+            }else if(colorSys.value === "rgb"){
+
+                colorValue =
+                `rgb(${colorSlider.value},120,255)`;
+
+            }else{
+
+                colorValue =
+                `rgba(${colorSlider.value},120,255,0.7)`;
+            }
+
+            player.style.backgroundColor =
+            colorValue;
+
+            player.style.boxShadow =
+            `0 0 20px ${colorValue},
+             0 0 40px ${colorValue},
+             0 0 70px ${colorValue}`;
+
+            let size =
+            sizeSlider.value + unitSys.value;
+
+            player.style.width = size;
+            player.style.height = size;
+
+            player.style.borderRadius =
+            radiusSlider.value + "%";
+
+            stats.textContent =
+            `COLOR:${colorSys.value.toUpperCase()} | SIZE:${size} | RADIUS:${radiusSlider.value}%`;
+        }
+
+        colorSys.addEventListener(
+            "change",
+            updatePlayer
+        );
+
+        colorSlider.addEventListener(
+            "input",
+            updatePlayer
+        );
+
+        unitSys.addEventListener(
+            "change",
+            updatePlayer
+        );
+
+        sizeSlider.addEventListener(
+            "input",
+            updatePlayer
+        );
+
+        radiusSlider.addEventListener(
+            "input",
+            updatePlayer
+        );
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        let currentX = 0;
+        let currentY = 0;
+
+        screen.addEventListener(
+            "mousemove",
+            (e)=>{
+
+                const rect =
+                screen.getBoundingClientRect();
+
+                mouseX =
+                e.clientX -
+                rect.left -
+                rect.width / 2;
+
+                mouseY =
+                e.clientY -
+                rect.top -
+                rect.height / 2;
+            }
+        );
+
+        function animate(){
+
+            currentX +=
+            (mouseX - currentX) * 0.08;
+
+            currentY +=
+            (mouseY - currentY) * 0.08;
+
+            player.style.transform =
+            `translate(
+                ${currentX / 5}px,
+                ${currentY / 5}px
+            )
+            rotate(${currentX / 30}deg)`;
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        for(let i = 0; i < 50; i++){
+
+            const particle =
+            document.createElement("div");
+
+            particle.classList.add("particle");
+
+            particle.style.left =
+            Math.random() * 100 + "%";
+
+            particle.style.top =
+            Math.random() * 100 + "%";
+
+            particle.style.animationDuration =
+            (Math.random() * 3 + 2) + "s";
+
+            particle.style.animationDelay =
+            Math.random() * 2 + "s";
+
+            screen.appendChild(particle);
+        }
+
+        updatePlayer();
+
+    </script>
+
+</body>
+
+</html>
