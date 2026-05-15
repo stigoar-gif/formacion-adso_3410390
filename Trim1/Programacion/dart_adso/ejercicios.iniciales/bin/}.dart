@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   //Bloque 3 Estructuras condicionales Simple y Doble
   // Pedir un número al usuario y determinar si es divisible por 5.
 
