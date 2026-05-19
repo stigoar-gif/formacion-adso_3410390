@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Proyecto Integrado Web</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: #1a1a24;
+  color:#e6e6e6;
+}
+
+/* contenedores */
+section{
+  max-width:900px;
+  margin:20px auto;
+  padding:20px;
+  background:#222235;
+  border-radius:10px;
+}
+
+/* títulos */
+h1{
+  text-align:center;
+  padding:20px;
+}
+
+h2{
+  border-left:4px solid #4f8cff;
+  padding-left:10px;
+}
+
+/* cajas */
+#caja-principal{
+  background:#2e2e44;
+  padding:10px;
+  color:white;
+  border-radius:6px;
+}
+
+.caja-secundaria{
+  border:2px solid #4f8cff;
+  padding:10px;
+  border-radius:6px;
+}
+
+/* tarjeta */
+.tarjeta{
+  background:#2b2b3f;
+  padding:15px;
+  margin-top:10px;
+  border-radius:8px;
+}
+
+/* display */
+.inline-demo span{
+  background:#444;
+  padding:5px;
+  margin:5px;
+}
+
+.block-demo div{
+  background:#444;
+  margin:5px 0;
+  padding:5px;
+}
+
+.inlineblock-demo div{
+  display:inline-block;
+  background:#444;
+  margin:5px;
+  padding:10px;
+}
+
+/* enlaces */
+a{
+  color:#4f8cff;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Proyecto Integrado Desarrollo Web</h1>
+
+<section>
+<h2>1. Teoría</h2>
+<p><strong>Semánticas:</strong> dan significado como header, section.</p>
+<p><strong>DOM:</strong> estructura en árbol del HTML.</p>
+<p><strong>Especificidad:</strong> id > class > etiqueta.</p>
+<p><strong>Reset CSS:</strong> limpia estilos del navegador.</p>
+<p><strong>Mobile First:</strong> diseño primero en celular.</p>
+<p><strong>Pseudo-clases:</strong> estilos por estado (hover).</p>
+</section>
+
+<section>
+<h2>2. Display</h2>
+
+<div class="inline-demo">
+<span>inline</span><span>inline</span>
+</div>
+
+<div class="block-demo">
+<div>block</div>
+<div>block</div>
+</div>
+
+<div class="inlineblock-demo">
+<div>inline-block</div>
+<div>inline-block</div>
+</div>
+</section>
+
+<section>
+<h2>3. ID y Class</h2>
+
+<div id="caja-principal">Caja con ID</div>
+<div class="caja-secundaria">Caja con Class</div>
+
+</section>
+
+<section>
+<h2>4. HTML básico</h2>
+
+<section>
+<h2>Mi hobby</h2>
+<p>Programar es raro pero útil.</p>
+<p>A veces funciona, a veces no, como la vida.</p>
+</section>
+
+<div class="tarjeta">
+Lista de lenguajes:
+<ol>
+<li>JavaScript</li>
+<li>Python</li>
+<li>Java</li>
+</ol>
+</div>
+
+<p>SENA <strong>institución</strong> y <em>ADSO</em></p>
+
+<a href="https://google.com" target="_blank">Visitar Google</a>
+
+<br><br>
+
+<img src="https://via.placeholder.com/150" alt="imagen">
+
+</section>
+
+</body>
+</html>
