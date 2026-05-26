@@ -4,6 +4,7 @@ void main(List<String> args) {
   //Pedir una calificación alfabética (A, B, C, D) y mostrar su equivalente numérico o descripción: A (Excelente), B (Bueno), C (Regular), D (Deficiente). 
 
 //Definicion de variables
+// ignore: unused_local_variable
 String? CalificacionAlfa, Calificacion,Num;
 
 //Entrada
