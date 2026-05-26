@@ -2,7 +2,7 @@ import 'dart:io';
 
 void main(List<String> args) {
   
-  //Leider Serna
+  
   //Pedir tres números al usuario y mostrar cuál es el menor de los tres. 
 
   //Definicion de variables

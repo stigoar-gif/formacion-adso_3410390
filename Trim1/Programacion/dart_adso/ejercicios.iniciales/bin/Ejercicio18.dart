@@ -1,7 +1,7 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
+  
   //Leer el número de un mes (1 a 4) y mostrar la estación del año correspondiente (ejemplo: 1-Verano, 2-Otoño, etc.). 
 
   //Definicion de variables

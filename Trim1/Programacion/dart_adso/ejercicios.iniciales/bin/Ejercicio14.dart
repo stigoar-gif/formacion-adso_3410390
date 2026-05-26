@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna 
   // Pedir dos números y mostrar el resultado de restarle el menor al mayor.
 
   //Definicion de variables

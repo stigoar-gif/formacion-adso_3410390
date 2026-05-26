@@ -1,11 +1,10 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   //Pedir una calificación alfabética (A, B, C, D) y mostrar su equivalente numérico o descripción: A (Excelente), B (Bueno), C (Regular), D (Deficiente). 
 
 //Definicion de variables
-String? CalificacionAlfa, CalificacionNum;
+String? CalificacionAlfa, Calificacion,Num;
 
 //Entrada
 stdout.writeln("Digite su calificacion (A,B,C,D)");

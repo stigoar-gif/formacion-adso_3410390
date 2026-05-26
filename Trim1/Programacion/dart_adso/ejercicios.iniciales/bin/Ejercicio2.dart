@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   /* Crear un algoritmo que pida al usuario el nombre de una ciudad y su temperatura 
 actual en grados Celsius, y luego los muestre. */
 

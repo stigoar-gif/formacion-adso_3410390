@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   /*  Pedir el precio de un producto y mostrar el valor del IVA (19%) y el precio total con 
 impuesto. */
 

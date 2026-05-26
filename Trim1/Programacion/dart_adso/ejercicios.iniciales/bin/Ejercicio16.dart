@@ -1,5 +1,4 @@
 void main(List<String> args) {
-  //Leider Serna
   // Un gimnasio ofrece un descuento del 20% si el cliente paga la anualidad completa (monto > 500.000), de lo contrario el descuento es del 5%. Calcular el total a pagar
 
   //Definicion de variables

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   /* Pedir el nombre de un empleado, el valor del día trabajado y el número de días 
 laborados en el mes; mostrar el nombre y el salario mensual. */ 
 

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   /* Leer la edad de una persona y mostrar un mensaje indicando si es mayor de 
 edad o menor de edad. */
 

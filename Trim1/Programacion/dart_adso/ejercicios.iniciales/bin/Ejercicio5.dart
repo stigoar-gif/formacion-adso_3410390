@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   /*  Hacer un algoritmo que lea la base y la altura de un triángulo y muestre su 
 perímetro y área */
 double Base,Altura,Perimetro,Area;

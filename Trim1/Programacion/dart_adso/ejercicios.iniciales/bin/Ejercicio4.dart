@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main() {
-//Leider Serna
 //Pedir al usuario su edad actual y mostrar cuántos años tendrá en el año 2050.
 
 // DEFINICION DE VARIABLES

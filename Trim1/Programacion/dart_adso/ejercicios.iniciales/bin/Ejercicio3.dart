@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   /*Hacer un algoritmo que lea el nombre de un conductor, la distancia recorrida 
 (km) y el tiempo empleado (horas) para mostrar la velocidad promedio. */
 

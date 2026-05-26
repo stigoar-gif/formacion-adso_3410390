@@ -1,7 +1,7 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
+  
   //Un trabajador cobra $20.000 por hora. Si trabaja más de 48 horas, las horas adicionales se pagan como "Horas Extra" con un recargo de $5.000 sobre el valor normal. Calcular su salario total. 
 
   //Definicion de variables

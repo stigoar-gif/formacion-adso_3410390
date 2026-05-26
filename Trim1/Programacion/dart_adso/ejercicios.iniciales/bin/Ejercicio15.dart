@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   /* Hacer un algoritmo que lea la temperatura de un paciente; si es mayor a 38 
 grados, mostrar "Tiene fiebre", de lo contrario "Temperatura normal". */
 

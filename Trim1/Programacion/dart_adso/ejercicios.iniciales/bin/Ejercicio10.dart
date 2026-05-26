@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  //Leider Serna
   /* . Hacer un algoritmo que lea un número de metros y lo convierta a centímetros y 
 milímetros. */
 

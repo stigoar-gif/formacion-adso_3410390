@@ -2,7 +2,6 @@
 import 'dart:io';
 
 void main(List<String> arguments) {
-//Leider Serna
 /*Hacer un algoritmo que declare una variable para el nombre de un videojuego, 
 otra para su género y otra para su precio en dólares. */
 
