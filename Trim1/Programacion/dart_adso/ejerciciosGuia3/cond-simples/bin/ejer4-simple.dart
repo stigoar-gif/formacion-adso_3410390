@@ -17,11 +17,11 @@ print("Ingrese la clave (1 o 2)");
 clave = double.parse(stdin.readLineSync()!);
 
 //PROCESO
-precioDescuento = 0.10;
+precioDescuento = precioOriginal * 0.10;
 if (clave == 2){
-  precioDescuento = 0.20;
+  precioDescuento = precioOriginal * 0.20;
 }
-precioFinal = precioOriginal - precioOriginal * precioDescuento;
+precioFinal = precioOriginal - precioDescuento;
 
 //SALIDA
 print("El nombre del articulo es \"$nomArticulo\"");

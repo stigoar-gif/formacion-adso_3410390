@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Tabla Ejemplo</title>
+    <style>
+        section {
+            background-color: grey;
+        }
+
+        table {
+            width: 100%;
+            font-size: 0.8rem;
+            color: rgb(23, 23, 23);
+            border-collapse: collapse;
+
+            tr {
+                th {
+                    background-color: rgb(72, 93, 93);
+                    color: #fff;
+                    border: 1px solid white;
+                }
+
+                td {
+                    background-color: rgb(0, 0, 0);
+                    padding: 0.3rem 0.3rem;
+                    text-align: center;
+                    border: 1px solid white;
+                    padding: 1rem;
+                    color: white;
+                }
+            }
+
+            tfoot {
+                td {
+                    background-color: rgb(106, 126, 126);
+                    color: white;
+                    text-align: center;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tabla Ejercicio</h1>
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>X</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>X</td>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td colspan="1"></td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                        <td>X</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">TOTAL DE X:</td>
+                        <td>21</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </header>
+</body>
+
+</html>

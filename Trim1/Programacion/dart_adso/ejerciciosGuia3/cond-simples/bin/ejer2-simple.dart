@@ -4,7 +4,7 @@ void main(List<String> arguments){
   /*2. La compañía de seguros de vida atlas se va a cambiar de domicilio y por lo tanto pone en venta su terreno pero no tiene una idea del valor del terreno, entonces solicita al departamento de sistemas que le desarrolle un algoritmo con la finalidad de que calcule e imprima el precio del terreno del cual se tiene los siguientes datos: largo, ancho y precio por metro cuadrado, si el terreno tiene más de 400 metros cuadrados se hace un descuento del 10%. */
 
   //DEFINICION DE VARIABLES 
- double largo, ancho, area, PrecioMetro, precioTotal;
+ double largo, ancho, area, PrecioMetro, precioTotal, descuento;
 
 //ENTRADA
  stdout.writeln("Ingrese el largo del terreno");
@@ -17,8 +17,9 @@ void main(List<String> arguments){
 //PROCESO
  area = largo * ancho;
  precioTotal = area * PrecioMetro;
-if ( area > 400);{
-precioTotal = precioTotal * 0.10;
+if ( area > 400){
+descuento = precioTotal * 0.10;
+precioTotal = precioTotal - descuento;
 }
 
 //SALIDA

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Tablas</title>
+    <style>
+        table {
+            width: 100%;
+            font-size: 0.8rem;
+            color: rgb(23, 23, 23);
+            border-collapse: collapse;
+
+            tr {
+                th {
+                    background-color: rgb(72, 93, 93);
+                    color: #fff;
+                }
+
+                td {
+                    background-color: rgba(217, 216, 216, 0.6);
+                    padding: 0.3rem 0.3rem;
+                    text-align: center;
+                }
+            }
+
+            tr:nth-child(even) td {
+                background-color: rgba(57, 106, 139, 0.3);
+            }
+
+            tfoot {
+                td {
+                    background-color: rgb(106, 126, 126);
+                    color: white;
+                    text-align: center;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>07. Tablas</h1>
+        <p>
+            Una tabla en HTML (table) es un elemento estructurado que organiza datos en filas y columnas, facilitando la
+            visualización clara de información tabular, estadísticas o comparativas.
+        </p>
+        <p>
+            Utiliza etiquetas específicas como tr (fila), th (encabezado) y td (celda de datos) para presentar texto,
+            imágenes o enlaces de forma ordenada.
+        </p>
+        <section>
+            <table>
+                <!-- CABECERA:En esta sección vazn los titulos de las columnas -->
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad </th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <!-- CUERPO: En esta sección van los datos -->
+                <tbody>
+                    <tr>
+                        <td>Teclado</td>
+                        <td>1</td>
+                        <td>$45.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mouse</td>
+                        <td>2</td>
+                        <td>$15.000</td>
+                    </tr>
+                    <tr>
+                        <td>Monitor 24"</td>
+                        <td>1</td>
+                        <td>$150.000</td>
+                    </tr>
+                    <tr>
+                        <td>Cable HDMI</td>
+                        <td>3</td>
+                        <td>$15.000</td>
+                    </tr>
+                    <tr>
+                        <td>Disco duro</td>
+                        <td>5</td>
+                        <td>$200.000</td>
+                    </tr>
+                    <tr>
+                        <td>Memoria USB</td>
+                        <td>8</td>
+                        <td>$40.000</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <!-- PIE DE TABLA:; Rasumen o totales de cifras -->
+                    <tr>
+                        <td colspan="2">TOTAL A PAGAR:</td>
+                        <td>$1.050.000</td>
+                    </tr>
+
+                </tfoot>
+            </table>
+        </section>
+    </header>
+</body>
+
+</html>
