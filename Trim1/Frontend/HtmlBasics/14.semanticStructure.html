@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura semantica HTML 5</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+     *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        main{
+            width: 70%;
+            header{
+                border: 1px solid rgb(0, 0, 0);
+                background-color: antiquewhite;
+            }
+            section{
+            font-size: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #0009;
+            padding: 1rem 0;
+            background-color: burlywood;
+            width: 100%;
+            margin: 1rem 0;
+            border-radius: unset;
+            }
+
+            footer{
+                border: 2px solid #0009;
+                background-color: beige;
+            }
+
+            article{
+                border: 1px solid #0009;
+                background-color: azure;
+                width: 70%;
+                min-height: 200px;
+            }
+
+            aside{
+                border: 1px solid #0009;
+                background-color: azure;
+                width: 30%;
+                min-height: 100px;
+            }
+
+            header, nav, footer, aside{
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;            
+            }
+
+            section{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+     }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>14. Estructura semantica HTML 5 </h1>
+        <p>Generación de estructura moderna, utilizando las etiquetas html 5 para realización del maquetado</p>
+    </header>
+    <section>
+        <!-- contenedor principal -->
+         <main>
+            <header>
+                <h1>Titulo encabezado</h1>
+                <nav>Menú navegación</nav>
+            </header>
+            <section>
+                <article>Contenido del article</article>
+                <aside>Contenido aside</aside>
+            </section>
+            <footer>Contenido footer</footer>
+         </main>
+    </section>
+</body>
+</html>
