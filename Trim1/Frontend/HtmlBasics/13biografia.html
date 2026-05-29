@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biografía Personal</title>
+
+    <!-- Conexión CSS -->
+    <link rel="stylesheet" href="css/main2.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    
+    
+    <style>
+        body{
+            font-family: "Quicksand", sans-serif;
+            text-align: center;
+        }
+
+        .presentacion{
+            background-color: #e1b613;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+        .habilidades{
+            background-color: #e1b613;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+        .gustos{
+            background-color:#e1b613;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+        .tabla{
+            background-color: #e1b613;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+        .redes{
+            background-color: #e1b613;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+        .audio{
+            background-color: #e1b613;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+        .video{
+            background-color: #e1b613;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+       
+        .card{
+            background-color: #e1b613;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 80%;
+        }
+        
+        
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td{
+            border: 1px solid #000000;
+            padding: 10px;
+        }
+
+        th{
+            background-color:rgb(255, 255, 255) ;
+        }
+
+        .galeria{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .foto{
+            width: 200px;
+            height: 200px; 
+            object-fit: cover; 
+            border-radius: 15px;
+            margin-bottom: 15px; 
+        }
+    </style>
+
+   
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <h1>Mi Biografía Personal</h1>
+        <p>Conociendo más sobre mí</p>
+    </header>
+
+    <!-- PRESENTACIÓN -->
+    <section class="presentacion">
+
+        <img src="img/stiven.jpeg" alt="Foto Personal" class="foto">
+
+        <div class="texto">
+            <h2>¿Quién soy?</h2>
+
+            <p>
+                Hola, mi nombre es <strong>Stiven</strong>.
+                Soy una persona divertida, responsable y bastante canson, me gusta
+                el diseño web y la programación.
+            </p>
+
+            <p>
+                Actualmente estudio ADSO y me gusta aprender sobre
+                desarrollo web, diseño, programación y herramientas digitales.
+            </p>
+
+            <p>
+                También disfruto montar bicicleta, escuchar música,
+                compartir tiempo con mi familia.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="habilidades">
+
+        <h2>Mis Habilidades</h2>
+
+        <ol>
+            <li>HTML5</li>
+            <li>CSS</li>
+            <li>Dart</li>
+        </ol>
+
+    </section>
+
+    <!-- GUSTOS -->
+    <section class="gustos">
+
+        <h2>Mis Gustos</h2>
+
+        <ul>
+            <li>Programar páginas web</li>
+            <li>montar bicicleta</li>
+            <li>Escuchar música</li>
+            <li>aprender trucos en mi bicicleta</li>
+            <li>Pasar tiempo con mi familia y amigos</li>
+        </ul>
+
+    </section>
+
+    <!-- TABLA -->
+    <section class="tabla">
+
+        <h2>Información Personal</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Dato</th>
+                    <th>Información</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Stiven Gonzalez Arias</td>
+                </tr>
+
+                <tr>
+                    <td>Edad</td>
+                    <td>16 años</td>
+                </tr>
+
+                <tr>
+                    <td>Ciudad</td>
+                    <td>Villamaria</td>
+                </tr>
+
+                <tr>
+                    <td>Programa</td>
+                    <td>ADSO</td>
+                </tr>
+
+                <tr>
+                    <td>Hobby</td>
+                    <td>Montar bicicleta y programar</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- LINKS -->
+    <section class="redes">
+
+        <h2>Mis Redes o Páginas Favoritas</h2>
+
+        <nav>
+            <a href="https://www.youtube.com/" target="_blank">Youtube</a>
+
+            <a href="https://github.com/" target="_blank">Github</a>
+
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        </nav>
+
+    </section>
+
+    <!-- AUDIO -->
+    <section class="audio">
+
+        <h2>Mi Música Favorita</h2>
+
+        <audio src="audio/LA PELEA CON EL DIABLO-OCTAVIO MEZA..mp3" controls></audio>
+
+    </section>
+
+    <!-- VIDEO -->
+    <section class="video">
+
+        <h2>Video Favorito</h2>
+
+        <video src="video/stiven.mp4"
+            controls
+            autoplay
+            loop
+            width="70%"
+           
+        ></video>
+
+    </section>
+
+    <!-- TARJETAS -->
+    <section class="tarjeta">
+
+        <div class="card">
+            <h3>Mi Meta</h3>
+            <p>
+                Convertirme en una gran desarrollador web
+                para tener un mejor futuro.
+            </p>
+            <h3>Mi Personalidad</h3>
+            <p>
+                Soy una persona alegre, creativa y divertida.
+            </p>
+            <h3>Mi Sueño</h3>
+            <p>
+                Tener mucho éxito y ser profesional 
+            </p>
+        </div>
+
+        
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <p>
+            Página creada por Stiven Gonzalez Arias © 2026
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
