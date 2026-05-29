@@ -19,7 +19,7 @@ void main() {
 
   if (num1 > num2) {
     mayor = num1;
-  } else {
+  } else{
     mayor = num2;
   }
 
