@@ -1,5 +1,3 @@
-// ignore_for_file: strict_top_level_inference
-
 import 'dart:io';
 
 void main(List<String> arguments){
@@ -18,36 +16,16 @@ nombre = stdin.readLineSync()??"";
 print("En que municipio vive");
 municipio = stdin.readLineSync()!.trim().toLowerCase();
 
-if (municipio == "manizales");
-else{
-print("Usted es de manizales");
+print("Ingrese la cantidad de días de asistencia");
+DiasAsistencia = double.parse(stdin.readLineSync()!);
+auxilioBase = DiasAsistencia * 5000;
+totalRecibir = auxilioBase;
+
+if (municipio != "manizales") {
+  double extra = auxilioBase * 0.15;
+  totalRecibir = auxilioBase + extra;
 }
-print("Usted no es de manizales");
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("$nombre, total a recibir es: $totalRecibir");
 
 }
