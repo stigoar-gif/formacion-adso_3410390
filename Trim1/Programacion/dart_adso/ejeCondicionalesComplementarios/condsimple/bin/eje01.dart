@@ -1,3 +1,5 @@
+// ignore_for_file: strict_top_level_inference
+
 import 'dart:io';
 
 void main(List<String> arguments){
@@ -14,8 +16,14 @@ print("Cual es su nombre");
 nombre = stdin.readLineSync()??"";
 
 print("En que municipio vive");
-municipio = stdin.readLineSync()!;
+municipio = stdin.readLineSync()!.trim().toLowerCase();
 
+if (municipio == "manizales");
+else{
+print("Usted es de manizales");
+}
+print("Usted no es de manizales");
+}
 
 
 
