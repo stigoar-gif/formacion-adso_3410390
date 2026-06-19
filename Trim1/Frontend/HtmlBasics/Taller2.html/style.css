@@ -1,0 +1,125 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+    padding-left:220px;
+}
+
+
+nav ul{
+    display:flex;
+    justify-content:space-between;
+    list-style:none;
+    padding:0;
+}
+
+nav a{
+    color:black;
+    font-weight:bold;
+    text-decoration:none;
+    padding:10px;
+    transition:0.3s ease-in-out;
+}
+
+nav a:hover,
+nav a:focus{
+    background-color:lightblue;
+    text-decoration:underline;
+}
+
+
+.contenedor-tarjetas{
+    display:flex;
+    gap:20px;
+}
+
+.tarjeta{
+    display:flex;
+    flex-direction:column;
+    border:1px solid gray;
+    padding:15px;
+    width:300px;
+}
+
+.tarjeta img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.tarjeta button{
+    margin-top:auto;
+    transition:0.3s ease-in-out;
+}
+
+.tarjeta button:hover{
+    transform:scale(1.05);
+}
+
+
+.galeria {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.galeria img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+
+@media (min-width:768px){
+
+    .galeria{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+}
+
+
+.menu-lateral{
+    position:fixed;
+    left:0;
+    top:0;
+    width: 150px;
+    height:100vh;
+    background:#ffffff;
+    padding:10px;
+}
+
+
+form{
+    max-width:500px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid gray;
+}
+
+input:focus,
+textarea:focus{
+    border:2px solid blue;
+    outline:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
