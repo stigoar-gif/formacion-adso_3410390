@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Proyecto ADSO</title>
+    <style>
+        :root { --primary: #2d3436; --accent: #0984e3; --bg: #f5f6fa; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); padding: 20px; color: var(--primary); }
+        .dashboard { max-width: 1200px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        
+        /* Resumen de indicadores */
+        .stats { display: flex; gap: 20px; margin-bottom: 30px; }
+        .stat-card { flex: 1; padding: 20px; border-radius: 15px; color: white; text-align: center; font-weight: bold; }
+        
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th { background: #f8f9fa; padding: 15px; border-bottom: 2px solid #eee; text-transform: uppercase; font-size: 0.8rem; }
+        td { padding: 15px; border-bottom: 1px solid #eee; text-align: center; }
+        
+        .badge { padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; }
+        .high { background: #ffeaa7; color: #d63031; border: 1px solid #fab1a0; }
+        .med { background: #e1f5fe; color: #0288d1; border: 1px solid #b3e5fc; }
+        .low { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+        
+        .progress-container { background: #eee; height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-bar { background: linear-gradient(90deg, #74b9ff, #0984e3); height: 100%; }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <h1>Proyecto de Software: Cronograma Ejecutivo</h1>
+    
+    <div class="stats">
+        <div class="stat-card" style="background: #d63031;">Tareas: 15</div>
+        <div class="stat-card" style="background: #0984e3;">Equipo: 5 personas</div>
+        <div class="stat-card" style="background: #00b894;">Estado: En Progreso</div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Actividad</th><th>Responsable</th><th>Prioridad</th><th>Progreso</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Análisis de Requisitos</td><td>Yulieth Luna</td>
+                <td><span class="badge high">Alta</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 100%;"></div></div></td>
+                <td>●</td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Modelado Entidad-Relación (BD)</td><td>Stiven Gonzalez</td>
+                <td><span class="badge high">Alta</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 90%;"></div></div></td>
+                <td>●</td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Creación de Scripts SQL / DDL</td><td>Stiven Gonzalez</td>
+                <td><span class="badge med">Media</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 75%;"></div></div></td>
+                <td></td><td>●</td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Optimización de Consultas BD</td><td>Stiven Gonzalez</td>
+                <td><span class="badge med">Media</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 40%;"></div></div></td>
+                <td></td><td></td><td></td><td>●</td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Configuración del Entorno Backend</td><td>Sebastian Zambrano</td>
+                <td><span class="badge med">Media</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 80%;"></div></div></td>
+                <td></td><td>●</td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Desarrollo de API REST (CRUD)</td><td>Stiven & Sebastian</td>
+                <td><span class="badge high">Alta</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 60%;"></div></div></td>
+                <td></td><td>●</td><td>●</td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Implementación Autenticación JWT (Backend)</td><td>Sebastian Zambrano</td>
+                <td><span class="badge high">Alta</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 50%;"></div></div></td>
+                <td></td><td></td><td>●</td><td>●</td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Diseño de UI/UX (Frontend)</td><td>Camilo Morales</td>
+                <td><span class="badge med">Media</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 70%;"></div></div></td>
+                <td></td><td>●</td><td>●</td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Maquetación de Vistas Frontend</td><td>Leider Serna</td>
+                <td><span class="badge med">Media</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 45%;"></div></div></td>
+                <td></td><td></td><td>●</td><td>●</td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>Consumo de API y Conexión Frontend</td><td>Leider & Camilo</td>
+                <td><span class="badge high">Alta</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 30%;"></div></div></td>
+                <td></td><td></td><td></td><td>●</td><td>●</td><td></td>
+            </tr>
+            <tr>
+                <td>Validación de Formularios (Frontend)</td><td>Leider Serna</td>
+                <td><span class="badge med">Media</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 20%;"></div></div></td>
+                <td></td><td></td><td></td><td></td><td>●</td><td></td>
+            </tr>
+            <tr>
+                <td>Pruebas Funcionales QA</td><td>Yulieth & Leider</td>
+                <td><span class="badge med">Media</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 15%;"></div></div></td>
+                <td></td><td></td><td></td><td></td><td>●</td><td>●</td>
+            </tr>
+            <tr>
+                <td>Despliegue y QA (Deploy)</td><td>Leider Serna</td>
+                <td><span class="badge low">Baja</span></td>
+                <td><div class="progress-container"><div class="progress-bar" style="width: 10%;"></div></div></td>
+                <td></td><td></td><td></td><td></td><td></td><td>●</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
