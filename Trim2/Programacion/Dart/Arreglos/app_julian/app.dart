@@ -1,5 +1,4 @@
 // Estructura de Datos para App - Gestión aleatoria Exposiciones
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:math';
 
@@ -24,7 +23,7 @@ void menuPrincipal() {
     print("5. Precargar datos de prueba");
     print("6. Salir");
     print("*" * 50);
-    print("Digite la opción deseada");
+    stdout.write("Digite la opción deseada: ");
     opcion = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
     switch (opcion) {
       case 1:
@@ -61,7 +60,7 @@ void gestionTemasCupos() {
     print("4. Eliminar un tema");
     print("5. Salir");
     print("*" * 50);
-    print("Ingrese la opción deseada");
+    stdout.write("Ingrese la opción deseada: ");
     opcion = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
     switch (opcion) {
       case 1:
@@ -90,29 +89,29 @@ void gestionEstudiantes() {
   int opcion = 0;
   do {
     print("*" * 50);
-    print("1. Crear un estudiante");
-    print("2. Listar estudiantes");
-    print("3. Editar un estudiante");
-    print("4. Eliminar un estudiante");
+    print("1. Crear un Estudiante");
+    print("2. Listar Estudiantes");
+    print("3. Editar un Estudiante");
+    print("4. Eliminar un Estudiante");
     print("5. Salir");
     print("*" * 50);
-    print("Ingrese la opción deseada");
+    stdout.write("Ingrese la opción deseada: ");
     opcion = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
     switch (opcion) {
       case 1:
-        crearEstudiantes();
+        crearEstudiante();
         break;
       case 2:
         listarEstudiantes();
         break;
       case 3:
-        editarEstudiantes();
+        editarEstudiante();
         break;
       case 4:
-        eliminarEstudiantes();
+        eliminarEstudiante();
         break;
       case 5:
-        print("Salir del menú de estudiantes!");
+        print("Salir del menú de Estudiantes!");
         break;
       default:
         print("Opción incorrecta");
@@ -122,195 +121,212 @@ void gestionEstudiantes() {
 }
 
 void generarExposiciones() {
-  print("-------- GENERANDO EXPOSICIONES ALEATORIAS --------");
-  if (temas.isEmpty) {
-    print("no hay temas registrados");
-    return;
-  }
-  if (estudiantes.isEmpty) {
-    print("no hay estudiantes");
+  print("-------- Generar exposiciones aleatorias -----");
+  if (temas.isEmpty || estudiantes.isEmpty) {
+    print("No hay temas o estudiantes registrados para generar exposiciones.");
     return;
   }
   int totalEstudiantes = estudiantes.length;
   int totalCupos = 0;
-  for (var element in cupos) {
-    //SE RECORRE EL VECTOR DE CUPOS PARA SABER EL TOTAL
-    totalCupos += element;
-  }
-  print("Total estudiantes: $totalEstudiantes");
-  print("Total cupos: $totalCupos");
-
+  for (var item in cupos) { // Se recorre el vector de CUPOS para calcular el total de cupos disponibles
+    totalCupos += item;
+  } 
+  print("Total Estudiantes: $totalEstudiantes");
+  print("Total Cupos: $totalCupos");
   if (totalCupos != totalEstudiantes) {
     int diferencia = 0;
-    print("No se puede realizar la asignación");
+    print("El total de cupos ($totalCupos) no coincide con el total de estudiantes ($totalEstudiantes).");
     if (totalEstudiantes > totalCupos) {
       diferencia = totalEstudiantes - totalCupos;
-      print("Faltan $diferencia cupos por asignar");
+      print("Faltan $diferencia cupos para asignar a todos los estudiantes.");
     } else {
       diferencia = totalCupos - totalEstudiantes;
-      print("Faltan $diferencia estudiantes por asignar");
+      print("Faltan $diferencia estudiantes por crear.");
     }
     return;
   }
-  //Se crea una copia del vector Estudiantes
-  aleatorioEstud = List.from(estudiantes);
-  //Mezclar aleatoriamente el vector
-  aleatorioEstud.shuffle(Random());
-  asignaciones = [];
-  int puntero = 0;
+  aleatorioEstud = List.from(estudiantes); // Se crea una copia del vector de estudiantes para mezclarlo.
+  aleatorioEstud.shuffle(Random()); // Se mezclan los estudiantes de manera aleatoria.
+  asignaciones = []; // Se reinicia el vector de asignaciones
+  int puntero = 0; // Se inicializa un puntero para recorrer el vector de estudiantes aleatorios
+
   for (var i = 0; i < temas.length; i++) {
-    int cantidad = cupos[i];
-    List<String> grupoAsignado = [];
-    for (var i = 0; i < cantidad; i++) {
-      grupoAsignado.add(aleatorioEstud[puntero]);
+    int cantidad = cupos[i]; // Se obtiene la cantidad de cupos para el tema actual
+    List<String> grupoAsignado = []; // Se crea una lista para almacenar los estudiantes asignados al tema actual
+    for (var j = 0; j < cantidad; j++) {
+      grupoAsignado.add(aleatorioEstud[puntero]); // Se añade el estudiante al grupo asignado
       puntero++;
     }
-    asignaciones.add(grupoAsignado);
+    asignaciones.add(grupoAsignado); // Se añade el grupo asignado al vector de asignaciones
   }
-  //Se llama al metodo para visualizar las asignaciones
+  // Se llama al método para visualizar las asignaciones generadas
   visualizarAsignaciones();
 }
-
 void visualizarAsignaciones() {
-  print("---------------ASIGNACION DE EXPOSICIONES-----------------");
+  print("-------- ASIGNACIÓN DE EXPOSICIONES -----");
   if (asignaciones.isEmpty) {
-    print("No se han hecho asifgnaciones para las exposiciones");
+    print("No se han hecho asignaciones para las exposiciones.");
     return;
   }
-  print("*" * 50);
-  for (var i = 0; i < asignaciones.length; i++) {
-    print("tema:${temas[i]}");
-    print("*" * 50);
-    print("Estudiantes Asignados");
+  print("*"*50);
+  for (var i = 0; i < temas.length; i++) {
+    print("*"*50);
+    print("Tema: ${temas[i]} - Cupo: ${cupos[i]}");
+    print("*"*50);
+    print("Estudiantes asignados:");
     for (var j = 0; j < asignaciones[i].length; j++) {
-      print("$asignaciones[i][j]");
+      print("${j + 1}. ${asignaciones[i][j]}");
     }
     print("-" * 50);
   }
 }
-
 void precargarDatosPrueba() {
-   temas = ["Tema 1, Tema 2, Tema3, Tema4, Tema5 "];
-   cupos = [];
-  estudiantes = [];
+  temas = [
+    '¿Qué es la programación Orientada a Objetos? ¿Cuáles son las características principales de la POO?',
+    '¿Cuál es la diferencia entre POO y programación estructurada? ¿Qué otros paradigmas hay y en qué consisten?',
+    '¿Qué es un objeto? ¿Qué es una Clase? ¿Cuál es la diferencia entre Objeto y Clase?',
+    '¿Qué es abstracción? Tener en cuenta: Clases Abstractas vs. Interfaces.',
+    '¿Qué es encapsulamiento? Modificadores de acceso, constructores/destructores, miembros estáticos.',
+    '¿Qué es herencia y un ejemplo gráfico y funcional?',
+    '¿Qué es polimorfismo y un ejemplo gráfico y funcional? (Overriding vs. Overloading)',
+    '¿Cuáles son los principales diagramas de UML? Relaciones entre clases en UML y código.'
+  ];
+  cupos = [3, 3, 3, 3, 3, 4, 4, 4];
+  estudiantes = [
+    'Alejandro Rua',
+    'Stiven Gonzalez',
+    'Miguel Angel Garcia',
+    'Leider Serna',
+    'Maria Jose Osorio',
+    'Mateo Pescador',
+    'Mateo Henao',
+    'Angie Veronica Carvajal',
+    'Juan Jose Bernal',
+    'Juan Diego Giraldo',
+    'Miguel Angel Cortes',
+    'Valeria Murillo',
+    'Yulieth Luna',
+    'Jean Karlo Velazquez',
+    'Camilo Morales',
+    'Thomas Toro',
+    'Johan Sebastian Zambrano',
+    'Susana Castro',
+    'Karol Daian Navia',
+    'David Ramirez',
+    'Santiago Gomez',
+    'Camilo Gil',
+    'Hector Alejandro Jimenez',
+    'Esteban Quiceno',
+    'Valeria Arenas',
+    'Jeronimo Medina',
+    'Juan Jose Lopez',];
+  asignaciones = [];
+  print("Datos de prueba precargados correctamente.");
 }
 
 // Funciones para TEMAS
 void crearTema() {
   String tema = "";
   int cupo = 0;
-  print("Ingrese el nuevo tema");
+  stdout.write("Ingrese el nuevo tema: ");
   tema = stdin.readLineSync() ?? '';
-  print("Ingrese la cantidad de personas para el nuevo tema: $tema");
+  stdout.write("Ingrese la cantidad de personas para el nuevo tema: $tema");
   cupo = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
   temas.add(tema); // Se añade el tema al vector de TEMAS
   cupos.add(cupo); // Se añade el cupo al vector de CUPOS
 }
 
 void listarTemas() {
-  print("Listado de Temas");
-  if (temas.isEmpty) {
-    print("No existen temas");
+  print("Listado de temas: ");
+  if(temas.isEmpty){
+    print("No hay temas registrados.");
     return;
   }
-  print("*" * 50);
-  for (var i = 0; i < temas.length; i++) {
-    print("${temas[i]} - Cupos: ${cupos[i]}");
+  for(var i = 0; i < temas.length; i++){
+    print("${i+1}. ${temas[i]} - Cupo: ${cupos[i]}");
   }
-  print("*" * 50);
 }
-
 void editarTema() {
   listarTemas();
-  print("cual tema requiere editar?");
-  int opcion = int.tryParse(stdin.readLineSync() ?? "") ?? 0;
-  if (opcion == null || opcion < 1 || opcion > temas.length) {
-    print("El tema a editar es invalido");
+  print("¿Cual tema quiere editar? (Ingrese el número del tema): ");
+  int opcion = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
+  if(opcion < 1 || opcion > temas.length || opcion == null) {
+    print("El tema a editar es invalido.");
     return;
   }
   int indice = opcion - 1;
-  print(
-    "Digite el nuevo nombre para el tema ${temas[indice]}, solo presiona enter si desea que continue el mismo nombre ",
-  );
+  stdout.write("Ingrese el nuevo nombre del tema ${temas[indice]}:. Solo presiona ENTER si desea que continúe con el mismo nombre. ");
   String nuevoTema = stdin.readLineSync() ?? '';
-  if (nuevoTema != null && nuevoTema.isNotEmpty) {
-    temas[indice] = nuevoTema; //SE REMPLAZA EL NOMBRE DEL TEMA
+  if (nuevoTema != null && nuevoTema.isEmpty) {
+    temas[indice] = nuevoTema; // Se reemplaza el nombre del tema en el vector de TEMAS
   }
 
-  print("Digite el nuevo cupo del tema: ${temas[indice]}");
+  print("Ingrese el nuevo cupo del tema ${temas[indice]}: ");
   int newCupo = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
-  if (newCupo > 0) {
-    cupos[indice] = newCupo;
+  if (newCupo > 0){
+    cupos[indice] = newCupo; // Se reemplaza el cupo del tema en el vector de CUPOS
   }
 }
-
 void eliminarTema() {
   listarTemas();
-  if (temas.isEmpty) return; // SI NO HAY TEMAS
-  print("Seleccione el tema a eliminar");
+  if(temas.isEmpty) return; // Si no hay temas, no se puede eliminar.
+  stdout.write("¿Cual tema quiere eliminar? (Ingrese el número del tema): ");
   int opcion = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
   if (opcion < 1 || opcion > temas.length) {
-    print("Tema incorrecto");
+    print("El tema a eliminar es invalido.");
     return;
   }
   int indice = opcion - 1;
-  temas.removeAt(indice); //SE ELIMINA EL TEMA REQUERIDO
-  cupos.removeAt(indice); //SE ELIMINA EL CUPO CORRESPONDIENTE
-  print("El tema ha sido eliminado exitosamente");
+  temas.removeAt(indice); // Se elimina el tema del vector de TEMAS
+  cupos.removeAt(indice); // Se elimina el cupo del vector de CUPOS
+  print("El tema ha sido eliminado correctamente.");
 }
 
 //Funciones para ESTUDIANTES
-
-void crearEstudiantes() {
+void crearEstudiante() {
   String estudiante = "";
-  print("Ingrese el nuevo estudiante");
-  estudiante = stdin.readLineSync() ?? "";
-  estudiantes.add(estudiante); //Se añade estudiante al vector ESTUDIANTES
+  stdout.write("Ingrese el nombre del nuevo estudiante: ");
+  estudiante = stdin.readLineSync() ?? '';
+  estudiantes.add(estudiante); // Se añade el estudiante al vector de ESTUDIANTES
 }
-
 void listarEstudiantes() {
-  print("Listado de estudiantes");
-  if (estudiantes.isEmpty) {
-    print("No existen estudiantes");
+  print("Listado de estudiantes: ");
+  if(estudiantes.isEmpty){
+    print("No hay estudiantes registrados.");
     return;
   }
-  print("*" * 50);
-  for (var i = 0; i < estudiantes.length; i++) {
-    print("${[i + 1]}  ${estudiantes[i]}");
+  print ("*"*50);
+  for(var i = 0; i < estudiantes.length; i++){
+    print("${i+1}. ${estudiantes[i]}");
   }
-  print("*" * 50);
+  print ("*"*50);
 }
-
-void editarEstudiantes() {
+void editarEstudiante() {
   listarEstudiantes();
-  print("cual Estudiante requiere editar?");
-  int opcion = int.tryParse(stdin.readLineSync() ?? "") ?? 0;
-  if (opcion == null || opcion < 1 || opcion > estudiantes.length) {
-    print("El Estudiante a editar es invalido");
+  print("¿Cual estudiante quiere editar? (Ingrese el número del estudiante): ");
+  int opcion = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
+  if(opcion < 1 || opcion > estudiantes.length) {
+    print("El Estudiante a editar es invalido.");
     return;
   }
   int indice = opcion - 1;
-  print(
-    "Digite el nuevo nombre para el Estudiante ${estudiantes[indice]}, solo presiona enter si desea que continue el mismo nombre ",
-  );
+  stdout.write("Ingrese el nuevo nombre del Estudiante ${estudiantes[indice]}:. Solo presiona ENTER si desea que continúe con el mismo nombre. ");
   String nuevoEstudiante = stdin.readLineSync() ?? '';
-  if (nuevoEstudiante != null && nuevoEstudiante.isNotEmpty) {
-    temas[indice] = nuevoEstudiante; //SE REMPLAZA EL NOMBRE DEL TEMA
+  if (nuevoEstudiante != null && nuevoEstudiante.isEmpty) {
+    estudiantes[indice] = nuevoEstudiante; // Se reemplaza el nombre del estudiante en el vector de Estudiantes
   }
-
-  print("El estudiante fue editado con éxito");
+  print("El estudiante ha sido editado correctamente.");
 }
-
-void eliminarEstudiantes() {
+void eliminarEstudiante() {
   listarEstudiantes();
-  if (estudiantes.isEmpty) return; // SI NO HAY TEMAS
-  print("Seleccione el estudiante a eliminar");
+  if(estudiantes.isEmpty) return; // Si no hay estudiantes, no se puede eliminar.
+  stdout.write("¿Cual Estudiante quiere eliminar? (Ingrese el número del estudiante): ");
   int opcion = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
   if (opcion < 1 || opcion > estudiantes.length) {
-    print("Estudiante incorrecto");
+    print("El Estudiante a eliminar es invalido.");
     return;
   }
   int indice = opcion - 1;
-  estudiantes.removeAt(indice); //SE ELIMINA EL ESTUDIANTE REQUERIDO
-  print("El estudiante ha sido eliminado exitosamente");
+  estudiantes.removeAt(indice); // Se elimina el estudiante del vector de estudiantes
+  print("El Estudiante ha sido eliminado correctamente.");
 }
