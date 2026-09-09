@@ -1,4 +1,6 @@
 // Estructura de Datos para App - Gestión aleatoria Exposiciones
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:math';
 
