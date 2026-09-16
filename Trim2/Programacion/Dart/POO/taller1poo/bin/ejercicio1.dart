@@ -1,131 +1,115 @@
+import 'dart:io';
 
+// 1. Clase Empleado
 class Empleado {
-  String nomEmpleado;
-  int edad;
-  double salario;
+  String nombre;
   String puesto;
   String tipoContrato;
+  int edad;
+  double salario;
 
-  //contructor 
+  // 2. Constructor
+  Empleado(this.nombre, this.puesto, this.tipoContrato, this.edad, this.salario);
 
-  Empleado (this.nomEmpleado, this.edad, this.salario, this.puesto, this.tipoContrato);
-
-  void aumentarSalario(double porcentaje){
-    salario += salario * (porcentaje/100);
+  // 3. Métodos
+  void aumentarSalario(double porcentaje) {
+    salario += salario * (porcentaje / 100);
+    print("Nuevo salario de $nombre: \$$salario");
   }
-  void cumplirAnios(){
+
+  void cumplirAnios() {
     edad++;
+    print("$nombre ahora tiene $edad años.");
   }
-  void cambiarPuesto(String nuevoPuesto){
+
+  void cambiarPuesto(String nuevoPuesto) {
     puesto = nuevoPuesto;
+    print("El nuevo puesto de $nombre es: $puesto");
   }
-  double calcularBonificacion(){
-    switch (tipoContrato.toLowerCase()){
-      case "contratista":
-      return salario * 0.10;
-      case "temporal":
-      return salario * 0.5;
-      case "indefinido":
-      return salario * 0.15;
-      default:
-      return 0.0;
-    }
-  }
-  void mostrarInformacion(){
-    print("-------------------------");
-    print("nombre: $nomEmpleado");
+
+  void mostrarInformacion() {
+    print("----------------------------------------");
+    print("Nombre: $nombre");
     print("Edad: $edad");
-    print("salario: ${salario.toStringAsFixed(2)}");
-    print("puesto: $puesto");
-    print("tipo de contrato: $tipoContrato");
-    print("Bonificacion: ${calcularBonificacion().toStringAsFixed(2)}");
-    print("-------------------------");
+    print("Puesto: $puesto");
+    print("Tipo de Contrato: $tipoContrato");
+    print("Salario: \$$salario");
+    print("----------------------------------------");
+  }
+
+  double calcularBonificacion() {
+    double bonificacion = 0.0;
+    if (tipoContrato == "Contratista") {
+      bonificacion = salario * 0.10;
+    } else if (tipoContrato == "Temporal") {
+      bonificacion = salario * 0.05;
+    } else if (tipoContrato == "Indefinido") {
+      bonificacion = salario * 0.15;
+    }
+    return bonificacion;
   }
 }
 
-// Función para recorrer la lista e imprimir la información
-void mostrarListaEmpleados(List<Empleado> empleados) {
+// 5. Función para recorrer y mostrar la lista de empleados
+void listarEmpleados(List<Empleado> empleados) {
+  print("_"*30);
   print("LISTA DE EMPLEADOS");
-  for (var empleado in empleados) {
-    empleado.mostrarInformacion();
+  for (var emp in empleados) {
+    emp.mostrarInformacion();
   }
 }
 
-import 'dart:io';
-import 'empleado.dart';
-
-// Función para recorrer la lista e imprimir la información
-void mostrarListaEmpleados(List<Empleado> empleados) {
-  for (var empleado in empleados) {
-    empleado.mostrarInformacion();
-  }
-}
-
+// 4 y 6. Método main con entrada de usuario y pruebas
 void main() {
   List<Empleado> listaEmpleados = [];
 
-  print('¿Cuántos empleados desea registrar?:');
+  print("¿Cuántos empleados desea registrar?");
   int cantidad = int.parse(stdin.readLineSync()!);
 
-  // Captura de datos por el usuario mediante un ciclo
+  // Captura de datos mediante ciclos
   for (int i = 0; i < cantidad; i++) {
-    print( "Registro del Empleado #${i + 1}");
+    print("--- Registro Empleado #${i + 1} ---");
 
-    print('Nombre:');
+    print("Nombre: ");
     String nombre = stdin.readLineSync()!;
 
-    print('Edad:');
-    int edad = int.parse(stdin.readLineSync()!);
-
-    print('Salario:');
-    double salario = double.parse(stdin.readLineSync()!);
-
-    print('Puesto:');
+    print("Puesto: ");
     String puesto = stdin.readLineSync()!;
 
-    print('Tipo de contrato (Indefinido / Temporal / Contratista):');
+    print("Tipo de contrato (Indefinido / Temporal / Contratista): ");
     String tipoContrato = stdin.readLineSync()!;
 
-    // Instancia posicional en orden (sin usar 'required')
-    listaEmpleados.add(
-      Empleado(nombre, edad, salario, puesto, tipoContrato),
-    );
+    print("Edad: ");
+    int edad = int.parse(stdin.readLineSync()!);
+
+    print("Salario: ");
+    double salario = double.parse(stdin.readLineSync()!);
+
+    // Instancia y adición a la lista
+    Empleado emp = Empleado(nombre, puesto, tipoContrato, edad, salario);
+    listaEmpleados.add(emp);
   }
 
-  // 5. Recorrer la lista y mostrar información inicial
-  mostrarListaEmpleados(listaEmpleados);
+  // Llama a la función para mostrar la lista completa
+  listarEmpleados(listaEmpleados);
 
-  // 6. Probar los métodos implementados
+  // Probar métodos en las instancias creadas
+  print("PRUEBA DE MÉTODOS");
   if (listaEmpleados.isNotEmpty) {
-    print('Aumentando 10% de salario al primer empleado...');
-    listaEmpleados[0].aumentarSalario(10);
+    Empleado emp1 = listaEmpleados[0];
+    print("Probando métodos para: ${emp1.nombre}");
 
-    print('Incrementando edad al primer empleado...');
-    listaEmpleados[0].cumplirAnios();
+    emp1.cumplirAnios();
+    emp1.aumentarSalario(10); // Aumento del 10%
+    emp1.cambiarPuesto("Supervisor");
 
-    if (listaEmpleados.length > 1) {
-      print('Cambiando puesto al segundo empleado...');
-      listaEmpleados[1].cambiarPuesto('Gerente de Área');
-    }
+    double bono = emp1.calcularBonificacion();
+    print("Bonificación calculada: \$$bono");
 
-    // Mostrar nuevamente la lista para verificar los cambios
-    mostrarListaEmpleados(listaEmpleados);
+    print("Información actualizada del empleado:");
+    emp1.mostrarInformacion();
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
